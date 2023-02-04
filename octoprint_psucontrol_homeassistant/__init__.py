@@ -54,7 +54,7 @@ class PSUControl_HomeAssistant(octoprint.plugin.StartupPlugin,
         psucontrol_helpers['register_plugin'](self)
 
     def send(self, cmd, data=None):
-        url = self.config['address'] + '/api' + cmd
+        url = self.config['address'].rstrip("/") + '/api' + cmd
 
         headers = dict(Authorization='Bearer ' + self.config['api_key'])
 
